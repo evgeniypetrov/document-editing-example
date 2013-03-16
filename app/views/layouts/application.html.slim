@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Example Editing
+    == javascript_include_tag "application"
+
+  body
+    #wrapper
+      header#header
+        p.notice = @notice
+        p.alert = @alert
+
+      #container
+        == yield
+
+      footer#footer.regular
+        .top-border
+        .copyright
+          ' © 2013
+        .powered-by
+          ' Powered by
+          span SomeBody

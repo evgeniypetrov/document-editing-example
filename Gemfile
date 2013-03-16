@@ -1,11 +1,12 @@
 source "https://rubygems.org"
 
 gem 'webmate', git: 'git://github.com/webmaterb/webmate.git'
-#gem 'webmate-authentication', git: 'git://github.com/webmaterb/webmate-authentication.git'
+gem 'webmate-authentication', git: 'git://github.com/webmaterb/webmate-authentication.git'
 
 gem 'slim'
 gem 'bson_ext'
 gem 'mongoid', '2.5.1'
+gem 'carrierwave-mongoid'
 gem 'active_model_serializers', git: "git://github.com/rails-api/active_model_serializers.git"
 
 group :assets do

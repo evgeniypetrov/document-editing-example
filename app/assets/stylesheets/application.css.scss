@@ -1,0 +1,36 @@
+//= require partials/reset
+//= require partials/layout
+//= require partials/forms
+//= require partials/tasks
+
+
+.nav {
+  background-color: #B0B0B0;
+  ul.menu {
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+
+    li { display: inline; }
+    a {  display: inline-block; padding: 10px; }
+  }
+} 
+
+.sidebar {
+  width: 20%;
+  float: left;
+  background-color:#F6F4F0;
+  ul.menu {
+    li { padding: 10px; }
+  }
+}
+
+.calendar {
+  width: 78%;
+  table.grid {
+
+  }
+}

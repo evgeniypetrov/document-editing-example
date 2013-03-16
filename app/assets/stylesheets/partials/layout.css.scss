@@ -1,0 +1,31 @@
+html { background: url('/assets/bg.jpg') 0 0 repeat #aaa; }
+body { font: 400 12px/1.2 'Open Sans', Tahoma, Arial, sans-serif; }
+
+#wrapper {
+  width: 930px;
+  padding: 15px;
+  margin: 40px auto;
+  background: #fff;
+  min-height: 400px;
+}
+h2 {
+  padding: 5px 0;
+  font-size: 18px;
+  color: #555;
+  border-bottom: 1px solid #84B431;
+  margin-bottom: 10px;
+}
+.clear {
+  clear: both;
+}
+#sessions-new,
+#registrations-new {
+  .links {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 18px;
+    a {
+      color: #333;
+    }
+  }
+}

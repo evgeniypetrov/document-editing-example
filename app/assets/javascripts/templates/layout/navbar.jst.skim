@@ -1,0 +1,10 @@
+.nav
+  ul.menu
+    li
+      a(href='#') Menu1
+    li
+      a(href='#') Menu2
+    li
+      a(href='#') Menu3
+    li
+      a(href='#') Menu4

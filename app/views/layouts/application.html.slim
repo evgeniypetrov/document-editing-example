@@ -3,6 +3,7 @@ html
   head
     title Example Editing
     == javascript_include_tag "application"
+    == stylesheet_link_tag "application"
 
   body
     #wrapper
@@ -13,10 +14,4 @@ html
       #container
         == yield
 
-      footer#footer.regular
-        .top-border
-        .copyright
-          ' © 2013
-        .powered-by
-          ' Powered by
-          span SomeBody
+      footer#footer

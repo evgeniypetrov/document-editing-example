@@ -1,0 +1,60 @@
+#create-task-input {
+  width: 770px;
+  float: left;
+  margin: 0 5px 10px 5px;
+}
+#create-task-submit {
+  float: left;
+  margin-top: 2px;
+}
+.tasks-list-container {
+  float: left;
+  width: 300px;
+  margin: 5px;
+  overflow: hidden;
+  h3 {
+    background: #f9f9f9;
+    border: 1px solid #C2C2BD;
+    border-bottom: 1px solid #B2B2AD;
+    box-shadow: 0 2px 6px;
+    padding: 6px;
+    text-align: center;
+    font-weight: normal;
+  }
+  .tasks-list {
+    background: #eee;
+    box-shadow: inset 1px 1px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #C2C2BD;
+    border-top: none;
+    padding: 10px 8px 8px 8px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 100px;
+  }
+  .task {
+    background: #f9f9f9;
+    border: 1px solid #D2DBBF;
+    font-size: 14px;
+    list-style: none;
+    padding: 8px 8px 6px 8px;
+    margin: 7px 0 0 0;
+    border-radius: 3px;
+    width: 264px;
+    &.ui-draggable-dragging, &.file-hover {
+      background: #84B431;
+      color: #fff;
+    }
+    .delete {
+      float: right;
+      font-size: 12px;
+      color: #777;
+      text-decoration: none;
+      margin-top: -2px;
+    }
+    .attachment-uploader {
+      opacity: 0;
+      height: 1px;
+      width: 1px;
+    }
+  }
+}

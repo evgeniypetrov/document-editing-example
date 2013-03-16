@@ -1,0 +1,9 @@
+table.grid
+  tr
+    - for food in ['toast', 'cheese', 'wine']
+      th #{ food }
+
+  tr
+    - for food in ['toast', 'cheese', 'wine']
+      th #{ food }
+    

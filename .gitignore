@@ -1,0 +1,18 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore Public Uploads
+/public/uploads
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/coverage/
+/config/database.yml
+/vendor/ruby
+
+.DS_Store
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

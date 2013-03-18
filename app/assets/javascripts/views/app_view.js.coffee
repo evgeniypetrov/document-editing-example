@@ -7,12 +7,12 @@ class app.views.layout.AppView extends Backbone.View
   initialize: (bootstrap_data) ->
     @navbar       = new app.views.layout.NavbarView()
     @sidebar      = new app.views.layout.SidebarView()
-    @calendar     = new app.views.content.CalendarView()
+    @grid         = new app.views.content.GridView()
 
   render: ->
     # render
     @$el.append(@navbar.render().el)
     @$el.append(@sidebar.render().el)
-    @$el.append(@calendar.render().el)
+    @$el.append(@grid.render().el)
 
     @

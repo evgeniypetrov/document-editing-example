@@ -8,7 +8,7 @@ end
 
 Webmate::Application.configure(:development) do |config|
   config.app.cache_classes = false
-  config.websockets.port = 3000
+  config.websockets.port = 3503
 end
 
 Webmate::Application.configure(:production) do |config|

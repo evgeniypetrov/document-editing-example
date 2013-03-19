@@ -12,18 +12,11 @@ class WebmateApp < Webmate::Application
 #    end
   end
 
-  channel "projects/:project_id" do
-    # Coming soon
-    #
-    # authorize do
-    #   current_user.projects.include?(project)
-    # end
-    #
-#    get "tasks/read" => TasksResponder
-#    post "tasks/create" => TasksResponder
-#    put "tasks/update" => TasksResponder
-#    delete "tasks/delete" => TasksResponder
-#
-#    post "attachments/create" => AttachmentsResponder
+  channel "api" do
+    get "projects/read" => ProjectsResponder
   end
+
+  #channel "projects" do
+  #  get 'read' => ProjectsResponder 
+  #end
 end

@@ -1,18 +1,32 @@
-app.views.layout or= {}
+App.Views.Layout or= {}
+
+# short cat
+# window.App.View.sidebar.projects
 
 # top header element - menu, user info, other actions
-class app.views.layout.SidebarView extends Backbone.View
+class App.Views.Layout.SidebarView extends Backbone.View
   className: 'sidebar'
   template: JST['templates/layout/sidebar']
 
   events:
     "click ul.menu li a" : "sidebarItemSelected"
 
-  initialize: () ->
+  initialize: (options) ->
+    @projects = options.projects
     # init
 
+    # set hooks to track
+    @listenTo(@projects, 'change', @render)
+    @listenTo(@projects, 'reset', @render)
+
+    @projects.fetch(success: @render)
+
   render: () ->
-    @$el.html(@template())
+    template_data = {
+      projects: @projects.toJSON()
+    }
+
+    @$el.html(@template(template_data))
     @
 
   # events handlers

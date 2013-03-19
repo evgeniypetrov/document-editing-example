@@ -1,14 +1,14 @@
 JST = window.JST = window.JST or {}
 
-window.app = {
-  models: {},
-  collections: {},
-  views: {},
-  routers: {},
+window.App = {
+  Models: {},
+  Collections: {},
+  Views: {},
+  Routers: {},
   start: (data) ->
     # load bootstrap
-    window.app.view = new app.views.layout.AppView(data)
-    $('#container').replaceWith(window.app.view.render().el)
+    window.App.View = new App.Views.Layout.AppView(data)
+    $('#container').replaceWith(window.App.View.render().el)
 
     #new ExampleApp.Routers.Tasks({ tasks: tasks });
     #Backbone.history.start();

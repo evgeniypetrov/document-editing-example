@@ -19,6 +19,7 @@ group :assets do
 end
 
 group :development do
+  gem 'debugger'
   gem 'capistrano', '2.13.5'
   gem 'capistrano-rbenv', '0.0.8'
 end

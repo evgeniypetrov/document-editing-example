@@ -1,7 +1,7 @@
-app.views.layout or= {}
+App.Views.Layout or= {}
 
 # top header element - menu, user info, other actions
-class app.views.layout.NavbarView extends Backbone.View
+class App.Views.Layout.NavbarView extends Backbone.View
   template: JST['templates/layout/navbar']
 
   events:

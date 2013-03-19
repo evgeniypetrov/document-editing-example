@@ -1,13 +1,19 @@
-app.views.layout or= {}
+App.Views.Layout or= {}
 
-class app.views.layout.AppView extends Backbone.View
+class App.Views.Layout.AppView extends Backbone.View
   className: 'main'
   #id
 
   initialize: (bootstrap_data) ->
-    @navbar       = new app.views.layout.NavbarView()
-    @sidebar      = new app.views.layout.SidebarView()
-    @grid         = new app.views.content.GridView()
+    # bootstrap
+    @projects     = new App.Collections.ProjectsCollection()
+    @client = Webmate.connect @projects.channel, =>
+      @projects.fetch()
+
+    # views
+    @navbar       = new App.Views.Layout.NavbarView()
+    @sidebar      = new App.Views.Layout.SidebarView(projects: @projects)
+    @grid         = new App.Views.Content.GridView()
 
   render: ->
     # render

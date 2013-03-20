@@ -16,8 +16,8 @@ class App.Views.Layout.SidebarView extends Backbone.View
     # init
 
     # set hooks to track
-    @listenTo(@projects, 'change', @render)
-    @listenTo(@projects, 'reset', @render)
+    @listenTo(@projects, 'change', @update)
+    @listenTo(@projects, 'reset', @update)
 
     @projects.fetch(success: @render)
 
@@ -28,6 +28,9 @@ class App.Views.Layout.SidebarView extends Backbone.View
 
     @$el.html(@template(template_data))
     @
+
+  update: () ->
+    @render()
 
   # events handlers
   sidebarItemSelected: (e) ->

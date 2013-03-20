@@ -7,8 +7,9 @@ class App.Views.Layout.AppView extends Backbone.View
   initialize: (bootstrap_data) ->
     # bootstrap
     @projects     = new App.Collections.ProjectsCollection()
-    @client = Webmate.connect @projects.channel, =>
-      @projects.fetch()
+
+    # init channels
+    #@client       = Webmate.connect('api')
 
     # views
     @navbar       = new App.Views.Layout.NavbarView()

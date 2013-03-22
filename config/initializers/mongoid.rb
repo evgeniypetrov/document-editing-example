@@ -11,5 +11,11 @@ db_port = db_host_and_port[1]
 connection = Mongo::Connection.new(db_host, db_port)
 
 Mongoid.configure do |config|
-  config.master = connection.db(db_name)
+  #config.master = connection.db(db_name)
+  config.sessions = {
+    :default => {
+      :hosts => ["#{db_host}:#{db_port}"],
+      :database => db_name
+    }
+  }
 end

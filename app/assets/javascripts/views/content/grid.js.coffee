@@ -7,9 +7,15 @@ class App.Views.Content.GridView extends Backbone.View
 
   events:
     "click ul.menu li a" : "menuItemSelected"
+    "click #test_button" : "testButtonClicked"
 
   initialize: () ->
     # init
+    @socket = new io.Socket
+      resource: 'api'
+      host: 'localhost'
+      port: 3503
+      force: true
 
   render: () ->
     @$el.html(@template())
@@ -19,3 +25,6 @@ class App.Views.Content.GridView extends Backbone.View
   menuItemSelected: (e) ->
     e.preventDefault()
     console.log('menuItemSelected')
+
+  testButtonClicked: (e) ->
+    @socket.connect()

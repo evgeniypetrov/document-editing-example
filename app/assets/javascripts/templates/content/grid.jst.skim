@@ -7,3 +7,5 @@ table.grid
     - for food in ['toast', 'cheese', 'wine']
       th #{ food }
     
+
+input#test_button(type='button' style='width: 200px; height: 100px;' value="Press Me")

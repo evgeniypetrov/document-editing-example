@@ -1,11 +1,17 @@
 source "https://rubygems.org"
 
-gem 'webmate', git: 'git://github.com/webmaterb/webmate.git'
-gem 'webmate-authentication', git: 'git://github.com/webmaterb/webmate-authentication.git'
+#gem 'webmate', git: 'git://github.com/webmaterb/webmate.git'
+#gem 'webmate-authentication', git: 'git://github.com/webmaterb/webmate-authentication.git'
+
+gem 'sinatra-contrib', git: 'git://github.com/sinatra/sinatra-contrib.git'
+
+gem 'webmate', path: '/Users/malleus/projects/current/new_workmate/webmate'
+gem 'webmate-authentication', path: '/Users/malleus/projects/current/new_workmate/webmate-authentication'
 
 gem 'slim'
 gem 'bson_ext'
-gem 'mongoid', '2.5.1'
+gem 'mongo'
+gem 'mongoid', '3.1.2'
 gem 'carrierwave-mongoid'
 gem 'active_model_serializers', git: "git://github.com/rails-api/active_model_serializers.git"
 
@@ -19,7 +25,7 @@ group :assets do
 end
 
 group :development do
-  gem 'debugger'
+  #gem 'debugger'
   gem 'capistrano', '2.13.5'
   gem 'capistrano-rbenv', '0.0.8'
 end

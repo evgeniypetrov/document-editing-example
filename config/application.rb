@@ -1,22 +1,25 @@
-class WebmateApp < Webmate::Application
-  set :port, 3503
+require 'digest/sha1'
+require 'base64'
 
+class WebmateApp < Webmate::Application
   authentication_for :user
 
   get '/' do
     slim :"pages/index.html", layout: :'layouts/application.html'
-#    if user_signed_in?
-#      slim :"pages/index"
-#    else
-#      redirect '/users/sign_in'
-#    end
   end
+
+  # channel definition example
+  # channel 'channel_name', options do
+  #   resource 'users',
+  #     only: [:read, :update, :delete, :create, :get],
+  #     responder: CustomUserResponder
+  # end
 
   channel "api" do
-    get "projects/read" => ProjectsResponder
+    resources 'projects'
   end
 
-  #channel "projects" do
-  #  get 'read' => ProjectsResponder 
-  #end
+  channel 'channel', {} do
+    resources :projects
+  end
 end

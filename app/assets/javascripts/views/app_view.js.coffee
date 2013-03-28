@@ -7,6 +7,7 @@ class App.Views.Layout.AppView extends Backbone.View
   initialize: (bootstrap_data) ->
     # bootstrap
     @projects     = new App.Collections.ProjectsCollection()
+    @listenTo(@projects, 'reset', @chooseProject)
 
     # init channels
     #@client       = Webmate.connect('api')
@@ -23,3 +24,9 @@ class App.Views.Layout.AppView extends Backbone.View
     @$el.append(@grid.render().el)
 
     @
+
+  # helper
+  chooseProject: ->
+    if @projects.length > 0
+      Backbone.trigger("project:selected", @projects.at(0))
+      @stopListening(@projects, 'reset', @chooseProject)

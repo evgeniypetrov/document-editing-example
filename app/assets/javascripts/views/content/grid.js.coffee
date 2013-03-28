@@ -11,48 +11,19 @@ class App.Views.Content.GridView extends Backbone.View
 
   events:
     "click ul.menu li a" : "menuItemSelected"
-    "click #test_button" : "testButtonClicked"
 
   initialize: () ->
-    # init
+    @listenTo(Backbone, "project:selected", @showTasksForProject)
 
   render: () ->
     @$el.html(@template())
     @
-
-  socket: () ->
-    @_socket or= @build_socket()
-
-  build_socket: () ->
-    socket = new io.Socket
-      resource: 'channel'
-      host: 'localhost'
-      port: 3503
-      force: true
-
-    socket.onPacket = (msg) ->
-      console.log('onPacket fetched')
-      console.log(msg)
-
-    socket.on("connect", (data) ->
-      console.log('connect packet')
-      console.log(data)
-    )
-
-    socket.connect()
-    socket
 
   # events handlers
   menuItemSelected: (e) ->
     e.preventDefault()
     console.log('menuItemSelected')
 
-  testButtonClicked: (e) ->
-    #@socket().connect()
-    valid_message_data = {
-      resource: 'projects'
-      action: 'read'
-    }
-    
-    num = Math.random()
-    @socket().packet({ type: 'message', data: JSON.stringify(valid_message_data)})
+  # helper methods
+  showTasksForProject: (project) ->
+    #

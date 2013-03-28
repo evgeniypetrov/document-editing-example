@@ -19,11 +19,15 @@ class App.Views.Layout.SidebarView extends Backbone.View
     @listenTo(@projects, 'change', @update)
     @listenTo(@projects, 'reset', @update)
 
-    @projects.fetch(success: @render)
+    @projects.fetch()
+
+    # global
+    @listenTo(Backbone, "project:selected", @selectProject)
 
   render: () ->
     template_data = {
-      projects: @projects.toJSON()
+      projects: @projects.toJSON(),
+      selected_id: @selected_project_id
     }
 
     @$el.html(@template(template_data))
@@ -35,4 +39,13 @@ class App.Views.Layout.SidebarView extends Backbone.View
   # events handlers
   sidebarItemSelected: (e) ->
     e.preventDefault()
-    console.log('menuItemSelected')
+    project = @projects.get($(e.currentTarget).data('id'))
+    Backbone.trigger("project:selected", project)
+
+  # helper methods
+  selectProject: (project) ->
+    @selected_project_id = project.id
+    @$el.find("ul.menu li")
+      .removeClass("selected")
+      .find("a[data-id=#{project.id}]").closest("li")
+      .addClass("selected")

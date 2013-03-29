@@ -32,6 +32,8 @@
 .calendar {
   width: 78%;
   table.grid {
-
+    tr.red { background-color: #FDD }
+    tr.green { background-color: #DFD }
+    tr.yellow { background-color: #FF0 }
   }
 }

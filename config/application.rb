@@ -15,11 +15,12 @@ class WebmateApp < Webmate::Application
   #     responder: CustomUserResponder
   # end
 
-  channel "api" do
+  channel "api", {} do
     resources 'projects'
+    resources 'tasks'
   end
 
-  channel 'channel', {} do
-    resources :projects
-  end
+#  channel 'channel', {} do
+#    resources :projects
+#  end
 end

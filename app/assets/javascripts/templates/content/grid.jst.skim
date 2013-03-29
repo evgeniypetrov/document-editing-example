@@ -1,11 +1,23 @@
-table.grid(style="width: 80%;")
-  tr.header
-    td(style="width: 20%;") Name
-    td(style="width: 60%;") Status
-    td(style="width: 20%;") Time
-
-  - for food in ['toast', 'cheese', 'wine']
-    tr
-      td #{ food }
-      td #{ food }
-      td #{ food }
+- if @tasks
+  - if @tasks.length == 0
+    p.small No tasks for this project.
+    a.new_task(href='#') Create new?
+  - else
+    .content
+      table.grid(style="width: 80%;")
+        tr.header
+          td(style="width: 10%;") Status
+          td(style="width: 30%;") Time
+          td(style="width: 30%;") Name
+          td(style="width: 20%;") Actions
+        - for task in @tasks
+          tr.task(data-id=task._id class=task.status)
+            td.status #{ task.status }
+            td #{ task.created_at }
+            td #{ task.name }
+            td
+              a.delete_task(href='#') Delete
+      p
+        a.new_task(href='#') Create new task?
+- else
+  p.small Tasks not yeat loaded

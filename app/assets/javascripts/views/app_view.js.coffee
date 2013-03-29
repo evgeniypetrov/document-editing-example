@@ -9,9 +9,6 @@ class App.Views.Layout.AppView extends Backbone.View
     @projects     = new App.Collections.ProjectsCollection()
     @listenTo(@projects, 'reset', @chooseProject)
 
-    # init channels
-    #@client       = Webmate.connect('api')
-
     # views
     @navbar       = new App.Views.Layout.NavbarView()
     @sidebar      = new App.Views.Layout.SidebarView(projects: @projects)

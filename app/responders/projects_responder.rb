@@ -1,10 +1,11 @@
 class ProjectsResponder < BaseResponder
   def read
-    @projects = Project.all
-    respond_with(@projects)
+    @project = Project.new
+    respond_with @project.to_json(methods: [:id])
   end
 
-  def index
-    respond_with({})
+  def read_all
+    @projects = Project.all
+    respond_with @projects.to_json(methods: [:id])
   end
 end

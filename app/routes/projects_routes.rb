@@ -1,6 +1,6 @@
 WebmateApp.define_routes do
   resources :projects, transport: [:http] do
-    resources :tasks, transport: [:ws] do
+    resources :tasks, transport: [:ws, :http] do
       resources :comments
 
       collection do

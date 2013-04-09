@@ -19,7 +19,7 @@ class App.Views.Layout.SidebarView extends Backbone.View
     @listenTo(@projects, 'change', @update)
     @listenTo(@projects, 'reset', @update)
 
-    @projects.fetch()
+    @projects.fetch reset: true
 
     # global
     @listenTo(Backbone, "project:selected", @selectProject)

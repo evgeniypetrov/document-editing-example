@@ -13,7 +13,6 @@ gem 'bson_ext'
 gem 'mongo'
 gem 'mongoid', '3.1.2'
 gem 'carrierwave-mongoid'
-gem 'active_model_serializers', git: "git://github.com/rails-api/active_model_serializers.git"
 
 group :assets do
   gem 'therubyracer', '0.10.2'

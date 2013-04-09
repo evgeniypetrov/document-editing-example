@@ -1,59 +1,37 @@
 class TasksResponder < BaseResponder
-  # Coming soon:
-  #
-  # resources :tasks
-  # authorize :user do
-  #   attributes :title, :status
-  #   can :create
-  #   can :update do |task|
-  #     task.user_id == current_user.id
-  #   end
-  # end
+
+  private
+
+  def project
+    @project ||= Project.find(params[:project_id])
+  end
+
+  def task
+    @task ||= project.tasks.where(id: params[:task_id]).first
+  end
+
+  public
+
+  def read_all
+    project.tasks.to_json(methods: [:id])
+  end
+
   def create
-    task = Task.new(params[:task])
+    task = project.tasks.build(name: params[:name])
     task.save ? task : {}
-  end
-
-  def read
-    project = Project.find(params[:project_id])
-    project.tasks.order_by(:created_at.asc)
+    task.to_json(methods: [:id])
   end
 
   def update
-    task = Task.find(params[:_id])
-    attributes = params[:task]
-    attributes.delete(:user_id)
-    task.update_attributes(attributes)
-    task
+    task.update_attributes(
+      status: params[:status]
+    )
+    task.to_json(methods: [:id])
   end
 
   def delete
-    task = Task.find(params[:_id])
     task.destroy
-    task
-  end
 
-=begin
-
-  def create
-    task = Task.new(params[:task])
-    task.user_id = current_user._id
-    task.save
-    task
+    task.to_json(methods: [:id])
   end
-
-  def update
-    task = Task.find(params[:_id])
-    attributes = params[:task]
-    attributes.delete(:user_id)
-    task.update_attributes(attributes)
-    task
-  end
-
-  def delete
-    task = Task.find(params[:_id])
-    task.destroy
-    task
-  end
-=end
 end

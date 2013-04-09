@@ -3,7 +3,6 @@ App.Collections or= {}
 class App.Collections.TasksCollection extends Backbone.Collection
   model: App.Models.TaskModel
   channel: 'api'
-  resource: 'task' # tasks
 
   initialize: (data, options) ->
     # may be, we should do this with some kind of dsl
@@ -13,3 +12,6 @@ class App.Collections.TasksCollection extends Backbone.Collection
     }
     # do some code
     @bindSocketEvents()
+
+  url: ->
+    "/projects/#{@project_id}/tasks"

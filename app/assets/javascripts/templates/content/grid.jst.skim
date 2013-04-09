@@ -9,7 +9,7 @@
           td(style="width: 10%;") Status
           td(style="width: 30%;") Time
           td(style="width: 30%;") Name
-          td(style="width: 20%;") Actions
+          td(style="width: 19%;") Actions
         - for task in @tasks
           tr.task(data-id=task._id class=task.status)
             td.status #{ task.status }

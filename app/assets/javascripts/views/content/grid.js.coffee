@@ -34,7 +34,7 @@ class App.Views.Content.GridView extends Backbone.View
   deleteTaskClicked: (e) ->
     e.preventDefault()
     task = @tasks.get($(e.currentTarget).closest('tr.task').data('id'))
-    task.destroy()
+    task.destroy(wait: true)
     # remove it
 
   changeTaskStatusClicked: (e) ->

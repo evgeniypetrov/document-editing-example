@@ -2,7 +2,10 @@ class App.Models.TaskModel extends Backbone.Model
 
   switchToNextStatus: (new_status) ->
     new_status ||= @getNextStatus()
-    @save(status: new_status)
+    @save(
+      { status: new_status },
+      { wait: true }
+    )
 
   getNextStatus: () ->
     statuses = ['red', 'yellow', 'green']

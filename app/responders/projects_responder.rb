@@ -6,6 +6,8 @@ class ProjectsResponder < BaseResponder
 
   def read_all
     @projects = Project.all
+
+    subscribe_to("channel")
     respond_with @projects.to_json(methods: [:id])
   end
 end

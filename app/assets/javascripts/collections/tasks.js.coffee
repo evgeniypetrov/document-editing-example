@@ -7,9 +7,7 @@ class App.Collections.TasksCollection extends Backbone.Collection
   initialize: (data, options) ->
     # may be, we should do this with some kind of dsl
     @project_id = options.project_id
-    @sync_data = {
-      project_id: @project_id
-    }
+
     # do some code
     @bindSocketEvents()
 

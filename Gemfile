@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem 'sinatra-contrib', git: 'git://github.com/sinatra/sinatra-contrib.git'
 
 gem 'webmate', path: '/Users/malleus/projects/current/new_workmate/webmate'
-gem 'webmate-authentication', path: '/Users/malleus/projects/current/new_workmate/webmate-authentication'
+#gem 'webmate-authentication', path: '/Users/malleus/projects/current/new_workmate/webmate-authentication'
 
 gem 'slim'
 gem 'bson_ext'

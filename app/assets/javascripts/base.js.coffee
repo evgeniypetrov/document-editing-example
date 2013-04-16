@@ -8,7 +8,7 @@ window.App = {
   start: (data) ->
     # load bootstrap
     window.App.View = new App.Views.Layout.AppView(data)
-    $('#container').replaceWith(window.App.View.render().el)
+    $('#container').html(window.App.View.render().el)
 
     #new ExampleApp.Routers.Tasks({ tasks: tasks });
     #Backbone.history.start();

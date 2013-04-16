@@ -5,7 +5,6 @@ class PagesResponder < BaseResponder
     include Sinatra::Sprockets::Helpers
 
     def user_websocket_token
-      '123'
     end
   end
 

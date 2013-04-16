@@ -1,0 +1,15 @@
+.container
+  .login style="text-align: center;"
+    form.login-form
+      div.input style="padding: 10px;"
+        label for="name" Login
+        br
+        input type="text" name="name"
+
+      div.input style="padding: 10px;"
+        label for="pass" Password
+        br
+        input type="password" name="password"
+
+      div.buttons
+        input type="button" value="Login" style="width: 100px;"

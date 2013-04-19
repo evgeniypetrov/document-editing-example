@@ -3,7 +3,9 @@ div
   | not loaded yet?
 
 javascript:
-  bootstrap_data = {};
+  bootstrap_data = {
+    current_user: #{{current_user.to_json}}
+  };
   $(document).ready(function() {
     window.App.start(bootstrap_data);
   });

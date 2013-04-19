@@ -5,23 +5,26 @@ class App.Views.Layout.AppView extends Backbone.View
   #id
 
   initialize: (bootstrap_data) ->
-    @bootstrap_data = bootstrap_data
+    @bootstrap_data = bootstrap_data || {}
+
+    @current_user = App.CurrentUser = new App.Models.CurrentUserModel(@bootstrap_data.current_user)
 
     if Webmate.Auth.isAuthorized()
       @showPrivatePage()
     else
-      @showAuthorizationPage()
+      @showPublicPage()
 
     @authorizeUser()
 
+    @listenTo(Backbone, 'user:logged_in', @authorizeUser)
     @listenTo(Backbone, 'user:authorized', @showPrivatePage)
+    @listenTo(Backbone, 'user:logged_out', @showPublicPage)
 
   authorizeUser: ->
-    Webmate.Auth.getToken (token) ->
-      Backbone.trigger('user:authorized', { token: token })
-
-  showAuthorizationPage: () ->
-    @auth_page    = new App.Views.Layout.AuthView()
+    # authorization required for websockets only
+    if App.CurrentUser.loggedIn()
+      Webmate.Auth.getToken (token) ->
+        Backbone.trigger('user:authorized', { token: token })
 
   showPrivatePage: () ->
     # bootstrap
@@ -33,7 +36,15 @@ class App.Views.Layout.AppView extends Backbone.View
     @sidebar      = new App.Views.Layout.SidebarView(projects: @projects)
     @grid         = new App.Views.Content.GridView()
 
+    @render()
+
+  showPublicPage: () ->
+    @auth_page    = new App.Views.Layout.AuthView()
+    @render()
+
   render: ->
+    @$el.empty()
+
     if Webmate.Auth.isAuthorized()
       # render
       @$el.append(@navbar.render().el)

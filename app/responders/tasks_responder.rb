@@ -10,6 +10,10 @@ class TasksResponder < BaseResponder
     @task ||= project.tasks.where(id: params[:task_id]).first
   end
 
+  def all_users
+    User.all.map(&:id)
+  end
+
   public
 
   def read_all
@@ -20,15 +24,15 @@ class TasksResponder < BaseResponder
     task = project.tasks.build(name: params[:name])
 
     if task.save
+      publish_to(all_users)
       respond_with task.to_json(methods: [:id])
-      publish_to(1)
     else
       {}
     end
   end
 
   def update
-    publish_to(1)
+    publish_to(all_users)
 
     task.update_attributes(
       status: params[:status]
@@ -37,7 +41,7 @@ class TasksResponder < BaseResponder
   end
 
   def delete
-    publish_to(1)
+    publish_to(all_users)
 
     task.destroy
     task.to_json(methods: [:id])

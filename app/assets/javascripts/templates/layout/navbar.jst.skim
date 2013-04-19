@@ -8,3 +8,5 @@
       a(href='#') Menu3
     li
       a(href='#') Menu4
+    li.logout
+      a(href='#') Logout

@@ -7,12 +7,14 @@ class App.Views.Layout.AuthView extends Backbone.View
   events:
     "submit form.login-form" : 'userAuthClicked'
     "click form.login-form .buttons input" : 'userAuthClicked'
+    "click a.test-login" : 'loginAsTestUserClicked'
 
   initialize: () ->
     # init
 
   render: () ->
     @$el.html(@template())
+    @delegateEvents()
     @
 
   # event handlers
@@ -20,15 +22,30 @@ class App.Views.Layout.AuthView extends Backbone.View
     e.preventDefault()
     
     formData =
-      login: 'guest'
-      password: '123'
+      user:
+        login: 'webmate'
+        email: 'webmate@example.com'
+        password: '123456'
+    @login(formData)
 
+  loginAsTestUserClicked: (e) ->
+    e.preventDefault()
+    id = $(e.currentTarget).data('id')
+
+    formData =
+      user:
+        login: "webmate#{id}"
+        email: "webmate#{id}@example.com"
+        password: '123456'
+
+    @login(formData)
+
+  login: (user_data) ->
     $.ajax
       url: '/users/sessions'
       dataType: 'JSON'
       type: "POST"
-      data: formData #JSON.stringify(formData)
+      data: user_data #JSON.stringify(formData)
       success: (model) ->
-        console.log(model)
+        window.App.View.current_user.set_current_user(model)
 
-    # auth user

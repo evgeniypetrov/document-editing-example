@@ -5,7 +5,7 @@ class App.Views.Layout.NavbarView extends Backbone.View
   template: JST['templates/layout/navbar']
 
   events:
-    "click ul.menu li a" : "menuItemSelected"
+    "click ul.menu li.logout a" : "logoutButtonClicked"
 
   initialize: () ->
     # init
@@ -18,3 +18,8 @@ class App.Views.Layout.NavbarView extends Backbone.View
   menuItemSelected: (e) ->
     e.preventDefault()
     console.log('menuItemSelected')
+
+  logoutButtonClicked: (e) ->
+    e.preventDefault()
+    console.log('logoutButton')
+    window.App.View.current_user.logout()

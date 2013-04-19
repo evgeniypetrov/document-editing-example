@@ -13,3 +13,13 @@
 
       div.buttons
         input type="button" value="Login" style="width: 100px;"
+
+  .login
+    div.input style="padding: 10px; text-align: center; font-size: 14px;"
+      ul
+        li style='padding-top: 5px;'
+          a.test-login data-id=1  Login as User1
+        li style='padding-top: 5px;'
+          a.test-login data-id=2  Login as User2
+        li style='padding-top: 5px;'
+          a.test-login data-id=3  Login as User3

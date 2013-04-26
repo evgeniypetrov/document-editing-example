@@ -17,7 +17,7 @@ class TasksResponder < BaseResponder
   public
 
   def read_all
-    project.tasks.to_json(methods: [:id])
+    respond_with TaskSerializer.new(project.tasks).to_json
   end
 
   def create
@@ -25,7 +25,7 @@ class TasksResponder < BaseResponder
 
     if task.save
       publish_to(all_users)
-      respond_with task.to_json(methods: [:id])
+      respond_with TaskSerializer.new(task).to_json
     else
       {}
     end
@@ -37,13 +37,13 @@ class TasksResponder < BaseResponder
     task.update_attributes(
       status: params[:status]
     )
-    task.to_json(methods: [:id])
+    respond_with TaskSerializer.new(task).to_json
   end
 
   def delete
     publish_to(all_users)
 
     task.destroy
-    task.to_json(methods: [:id])
+    respond_with TaskSerializer.new(task).to_json
   end
 end

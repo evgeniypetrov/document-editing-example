@@ -1,7 +1,26 @@
+require 'benchmark'
+
 task :environment do
   require "./config/environment"
 end
 #require 'sinatra/sprockets/rake'
+
+desc "benchmark serailizer"
+task :benchmark => :environment do
+  projects = Project.all.to_a
+  n = 1000
+
+  Benchmark.bm do |x|
+    x.report { n.times { ProjectSerializer.new(projects).to_json }}
+  end
+end
+
+desc "check serailizer"
+task :check => :environment do
+  projects = Project.all.to_a
+  puts ProjectSerializer.new(projects).to_json
+end
+
 
 desc "show all routes"
 task :routes => :environment do

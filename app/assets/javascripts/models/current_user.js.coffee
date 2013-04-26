@@ -21,7 +21,7 @@ class App.Models.CurrentUserModel extends Backbone.Model
 
   loggedIn: () ->
     user = @get('user')
-    user && user.get('_id')?
+    user && user.get('id')?
 
   logout: () ->
     $.ajax

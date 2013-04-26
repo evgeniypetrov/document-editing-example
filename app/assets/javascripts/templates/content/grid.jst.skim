@@ -11,7 +11,7 @@
           td(style="width: 30%;") Name
           td(style="width: 19%;") Actions
         - for task in @tasks
-          tr.task(data-id=task._id class=task.status)
+          tr.task(data-id=task.id class=task.status)
             td.status #{ task.status }
             td #{ task.created_at }
             td #{ task.name }

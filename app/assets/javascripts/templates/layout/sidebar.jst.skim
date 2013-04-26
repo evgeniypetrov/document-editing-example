@@ -1,6 +1,6 @@
 h3 projects
 ul.menu
   - for project in @projects
-    - class_name = if project._id == @selected_id then "selected" else ""
+    - class_name = if project.id == @selected_id then "selected" else ""
     li(class="#{class_name}")
-      a(href='#' data-id='#{ project._id }') #{ project.name }
+      a(href='#' data-id='#{ project.id }') #{ project.name }

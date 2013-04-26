@@ -8,14 +8,16 @@ end
 
 Webmate::Application.configure(:development) do |config|
   config.app.cache_classes = false
-  config.websockets.port = 3503
+  config.assets.compile = true
   config.websockets.enabled = true
+  config.websockets.port = 3503
   config.websockets.namespace = 'api'
 end
 
 Webmate::Application.configure(:production) do |config|
   config.app.cache_classes = true
-  config.websockets.port = 9020
   config.assets.compile = false
+  config.websockets.enabled = true
+  config.websockets.port = 9020
   config.websockets.namespace = 'api'
 end

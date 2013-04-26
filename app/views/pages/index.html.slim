@@ -4,7 +4,7 @@ div
 
 javascript:
   bootstrap_data = {
-    current_user: #{{ UserSerializer.new(current_user).to_json}}
+    current_user: #{{ current_user.present? ? UserSerializer.new(current_user).to_json : "{}" }}
   };
   $(document).ready(function() {
     window.App.start(bootstrap_data);
